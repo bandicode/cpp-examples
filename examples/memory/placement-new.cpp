@@ -1,5 +1,6 @@
 
 #include <iostream> // cout
+#include <memory>
 
 struct Object
 {
