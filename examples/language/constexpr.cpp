@@ -14,7 +14,7 @@ int factorial(int n)
 }
 
 // constexpr // constexpr-functions cannot invoke UB
-int random()
+int random_integer()
 {
   int n;
   return n;
@@ -31,5 +31,5 @@ int main()
 
   std::cout << factorial(7) << "\n";
 
-  std::cout << random() << "\n";
+  std::cout << random_integer() << "\n";
 }
