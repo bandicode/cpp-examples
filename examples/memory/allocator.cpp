@@ -1,6 +1,7 @@
 
 #include <cstddef>
 #include <new>
+#include <typeinfo>
 #include <vector>
 #include <iostream>
 
