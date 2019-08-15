@@ -1,4 +1,5 @@
 
+#include <cstddef>
 #include <iostream>
 
 template<int N>
@@ -13,6 +14,18 @@ int factorial(int n)
   return n <= 1 ? 1 : n * factorial(n - 1);
 }
 
+template<std::size_t N>
+struct Factorial
+{
+  static const int value = N * Factorial<N - 1>::value;
+};
+
+template<>
+struct Factorial<0>
+{
+  static const int value = 1;
+};
+
 // constexpr // constexpr-functions cannot invoke UB
 int random_integer()
 {
@@ -23,6 +36,7 @@ int random_integer()
 int main() 
 {
   // template arguments must be compile-time constants
+  print<Factorial<5>::value>();
   print<factorial(5)>();
 
   // constexpr variables must be evaluated at compile-time
