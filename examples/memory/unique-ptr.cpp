@@ -37,7 +37,13 @@ struct Resource
   Resource& operator=(const Resource&) = delete;
 };
 
-std::unique_ptr<Resource> acquireResource()
+Resource* getResource()
+{
+  Resource* r = new Resource{ "manual new" };
+  return r;
+}
+
+std::unique_ptr<Resource> safeGetResource()
 {
   auto r = std::make_unique<Resource>("external-resource");
   return r;
@@ -48,7 +54,12 @@ int main()
   std::atexit(atexit_handler);
 
   {
-    Resource* r = new Resource("manual new");
+    // int stack_integers[100'000'000]; // nope: too large for the stack
+    int* integers = new int[100'000'000];
+    /* ... do computations ... */
+    delete[] integers;
+
+    Resource* r = getResource();
     /* ... */
     delete r; // resource must be explicitely deleted !
   }
@@ -60,7 +71,7 @@ int main()
   }
 
   {
-    std::unique_ptr<Resource> r1 = acquireResource();
+    std::unique_ptr<Resource> r1 = safeGetResource();
     std::unique_ptr<Resource> r2;
 
     // r1 = r2; // does not compile, unique_ptr cannot be copied
