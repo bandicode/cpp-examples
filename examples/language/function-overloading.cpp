@@ -45,7 +45,7 @@ void bar(int, double)
 int main() 
 {
   foo(7);
-  foo(NULL);
+  // foo(NULL); // behaviour depends on your compiler
   foo(nullptr);
 
   bar("Hello World");
