@@ -1,12 +1,17 @@
 
 set(EXAMPLES_COMMON_PREFIX ${CMAKE_CURRENT_LIST_DIR})
 
+set(CONTAINERS_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'containers' examples")
 set(LANGUAGE_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'language' examples")
 set(LIBRARY_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'library' examples")
 set(MEMORY_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'memory' examples")
 set(PREPROCESSOR_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'preprocessor' examples")
 set(STL_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'stl' examples")
 set(STRING_EXAMPLES TRUE CACHE BOOL "Set to true to generate the 'string' examples")
+
+if(${CONTAINERS_EXAMPLES})
+  add_subdirectory(containers)
+endif()
 
 if(${LANGUAGE_EXAMPLES})
   add_subdirectory(language)
