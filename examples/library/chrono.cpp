@@ -21,5 +21,12 @@ int main()
   std::cout << "Time to fill and iterate a vector of "
     << size << " ints : " << diff.count() << " s\n";
 
+  using namespace std::chrono_literals;
+
+  if (diff > 100us)
+  {
+    std::cout << "Took more than 100 micro-seconds\n";
+  }
+
   std::cout << "Total : " << sum << "\n";
 }
