@@ -34,6 +34,20 @@ int main()
 
   std::cout << std::endl;
 
+  // The above range-for is equivalent to the following
+  {
+    for (auto begin = std::begin(digits); begin != std::end(digits); ++begin)
+    {
+      const int d = *begin;
+
+      {
+        std::cout << d << " ";
+      }
+    }
+  }
+
+  std::cout << std::endl;
+
   // good: iterators are used to remove elements from the container
   for (auto it = digits.begin(); it != digits.end();)
   {
