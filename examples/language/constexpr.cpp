@@ -26,7 +26,7 @@ struct Factorial<0>
   static const int value = 1;
 };
 
-// constexpr // constexpr-functions cannot invoke UB
+// constexpr // constexpr-functions cannot use variables that are not initialized
 int random_integer()
 {
   int n;
