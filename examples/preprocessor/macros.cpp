@@ -12,7 +12,10 @@
 
 int main() 
 {
-  std::cout << NINETEEN_EIGHTY_FOUR << "\n";
+  /* This is a comment */
+
+  std::cout \
+    << NINETEEN_EIGHTY_FOUR << "\n";
 
   int a = 3, b = 2;
 

@@ -1,4 +1,5 @@
 
+#include <cassert>
 #include <iostream>
 
 struct X
@@ -39,13 +40,17 @@ int main()
   int integer_default_init; // bad: value is unpredictable (UB)
   int* pointer_to_integer_default_init; // bad: value is unpredictable (UB)
   X object_default_init; // ok: object is default constructed
+  assert(object_default_init.x == 0);
 
   /* Value initialization */
 
   int integer_value_init{}; // good: integer is zero-initialized
+  assert(integer_value_init == 0);
   int* pointer_to_integer_value_init{}; // good: pointer is initialized with nullptr
+  assert(pointer_to_integer_value_init == nullptr);
   // X object_value_init(); // bad: declares a function !
   X object_value_init{};
+  assert(object_value_init.x == 0);
 
   /* Initialization with an expression */
 
