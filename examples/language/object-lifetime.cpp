@@ -17,13 +17,6 @@ struct X
   }
 };
 
-X f(X x)
-{
-  x.n += 1;
-  return x;
-}
-
-
 int main() 
 {
   X x{ 1 };

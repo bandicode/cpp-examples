@@ -29,7 +29,7 @@ struct X
 // const-reference parameters can bind to temporaries
 void object_by_const_ref(const X&)
 {
-  std::cout << "bar(const X&)" << "\n";
+  std::cout << "object_by_const_ref(const X&)" << "\n";
 }
 
 
@@ -37,14 +37,14 @@ void object_by_const_ref(const X&)
 // Non-const references cannot bind to temporaries
 void object_by_ref(X&)
 {
-  std::cout << "bar(X&)" << "\n";
+  std::cout << "object_by_ref(X&)" << "\n";
 }
 
 // Pass X as a rvalue-reference if you want to transfer resource ownership
 // Temporaries bind preferently to rvalue-references
 void object_by_rvalue_ref(X&&)
 {
-  std::cout << "bar(X&&)" << "\n";
+  std::cout << "object_by_rvalue_ref(X&&)" << "\n";
 }
 
 int main() 
