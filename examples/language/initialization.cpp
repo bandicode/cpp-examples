@@ -49,8 +49,8 @@ int main()
   int* pointer_to_integer_value_init{}; // good: pointer is initialized with nullptr
   assert(pointer_to_integer_value_init == nullptr);
   // X object_value_init(); // bad: declares a function !
-  X object_value_init{};
-  assert(object_value_init.x == 0);
+  X object_value_init_brace{};
+  assert(object_value_init_brace.x == 0);
 
   /* Initialization with an expression */
 
@@ -62,6 +62,7 @@ int main()
   /* Direct () & List {} initialization */
 
   int integer_direct_init(3.14); 
+  assert(integer_direct_init == 3);
   int integer_brace_init{ static_cast<int>(3.14) }; // list-initialization forbids narrowing conversion
   int* pointer_to_integer_arg_init(&integer_value_init);
   int* pointer_to_integer_brace_init{ &integer_value_init };
